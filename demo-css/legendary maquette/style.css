@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+body {
+    width: 1000px;
+}
+
+main {
+    background-color: #efe784;
+    width: 1000px;
+    margin-left: 500px;
+}
+
+header {
+    background-image: url(images/LEGENDARY/header.jpg);
+    background-repeat: no-repeat;
+    width: 800px;
+    height: 300px;
+    position: relative;
+    top: 0px;
+    left: 100px;
+
+}
+
+h1 {
+    color: #efe784;
+    font-size: 2rem;
+    letter-spacing: 10px;
+    position: relative;
+    top: 200px;
+    text-align: center;
+
+}
+
+.intro {
+    background-color: #3e3838;
+    color: #efe784;
+    width: 800px;
+    position: relative;
+    left: 100px;
+    padding: 50px;
+    text-align: center;
+}
+
+h2 {
+    position: relative;
+    font-size: 1rem;
+    bottom: 30px;
+    letter-spacing: 10px;
+    border-top: 1px solid #efe784;
+    border-bottom: 1px solid #efe784;
+    display: inline;
+    padding: 5px;
+}
+.avengers{
+    background-color: white;
+    color:#282828 ;
+    width: 800px;
+    height: 600px;
+    position: relative;
+    left: 100px;
+    padding: 50px;
+    text-align: center;
+
+}
+h3{
+    text-align: left;
+    padding-left: 50px;
+
+}
+.p2 { text-align: left;
+padding-bottom: 50px;
+padding-top: 20px;
+}
+img{
+    width: 700px;
+    height: 200px;
+    padding-bottom: 20px;
+}
+article{
+    text-align: left;
+}
+span{
+    color: #6cbcb3;
+}
+.aStarIsBorn{
+     background-color: #6cbcb3;
+    color: #3e3838;
+    position: relative;
+    background-image: url(images/LEGENDARY/star.jpg);
+    width: 800px;
+    height: 500px;
+    left: 100px;
+    text-align: left; 
+
+}
+.p3{
+    text-align: left;
+    padding: 50px;
+}
