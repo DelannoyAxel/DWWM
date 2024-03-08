@@ -23,8 +23,9 @@ header {
     top: 0px;
     left: 100px;
 }
-.logoheader{
-    position: relative; 
+
+.logoheader {
+    position: relative;
     top: 50px;
     left: 200px;
 }
@@ -43,10 +44,15 @@ h1 {
     background-color: #3e3838;
     color: #efe784;
     width: 800px;
+    height: 300px;
     position: relative;
     left: 100px;
     padding: 50px;
     text-align: center;
+}
+
+p {
+    padding: 0px 75px 0px 75px;
 }
 
 h2 {
@@ -59,31 +65,88 @@ h2 {
     display: inline;
     padding: 5px;
 }
-.avengers{
+
+.avengers {
     background-color: white;
-    color:#282828 ;
+    color: #282828;
     width: 800px;
     height: 600px;
     position: relative;
     left: 100px;
     padding: 50px;
-    text-align: center;  
+    text-align: center;
+}
+.avengersphoto{ background-image: url(images/LEGENDARY/avengers.jpg);
+    background-repeat: no-repeat;
+    background-position: 0% 25%;
+    background-size: cover;
+    height: 200px;
+    width: 550px;
+    position: relative;
+    left: 75px;
 }
 
-
-h3{
+article {
+    position: relative;
+    top: 50px;
+    left: 75px;
     text-align: left;
-    padding-left: 50px;
-}
-.p2 { text-align: left;
-padding-bottom: 50px;
-padding-top: 20px;
+
 }
 
-article{
+
+h3 {
     text-align: left;
+    padding-left: 75px;
+    padding-bottom: 20px
 }
-span{
+
+.p2 {
+    text-align: left;
+    padding-bottom: 50px;
+    padding-top: 20px;
+}
+
+span {
     color: #6cbcb3;
 }
 
+.aStarIsBorn{
+    background-color: #6cbcb3;
+    color: #3e3838;
+    width: 800px;
+    height: 600px;
+    position: relative;
+    left: 100px;
+    padding: 50px;
+}
+.starphoto{
+background-image:url(images/LEGENDARY/star.jpg);
+background-repeat: no-repeat;
+    background-position: 0% 25%;
+    background-size: cover;
+    height: 200px;
+    width: 550px;
+    position: relative;
+    left: 75px;
+
+}
+.articleStar{
+    position: relative;
+    top: 0px;
+    bottom: 150px;
+
+}
+/* .WomanAtWar{
+    background-color: #3e3838;
+    color: white;
+    width: 800px;
+    height: 700px;
+    position: relative;
+    left: 100px;
+    padding: 50px;
+    background-image: url(images/LEGENDARY/woman.jpg);
+    background-size: 550px;
+    background-repeat: no-repeat;
+    background-position: 55% 65%
+} */
