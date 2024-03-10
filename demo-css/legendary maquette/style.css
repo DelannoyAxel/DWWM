@@ -33,7 +33,7 @@ header {
 h1 {
     color: #efe784;
     font-size: 2rem;
-    letter-spacing: 10px;
+    letter-spacing: 20px;
     position: relative;
     top: 80px;
     text-align: center;
@@ -76,7 +76,9 @@ h2 {
     padding: 50px;
     text-align: center;
 }
-.avengersphoto{ background-image: url(images/LEGENDARY/avengers.jpg);
+
+.avengersphoto {
+    background-image: url(images/LEGENDARY/avengers.jpg);
     background-repeat: no-repeat;
     background-position: 0% 25%;
     background-size: cover;
@@ -84,6 +86,10 @@ h2 {
     width: 550px;
     position: relative;
     left: 75px;
+}
+
+.articleavengers {
+    color: #6cbcb3;
 }
 
 article {
@@ -107,46 +113,85 @@ h3 {
     padding-top: 20px;
 }
 
-span {
+strong {
     color: #6cbcb3;
 }
 
-.aStarIsBorn{
+
+.aStarIsBorn {
     background-color: #6cbcb3;
     color: #3e3838;
+    width: 800px;
+    height: 500px;
+    position: relative;
+    left: 100px;
+    padding: 50px;
+}
+
+.starphoto {
+    background-image: url(images/LEGENDARY/star.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    width: 550px;
+    position: relative;
+    left: 75px;
+    top: 40px;
+    background-position-x: 50%;
+    background-position-y: 10%;
+
+}
+
+.articleStar {
+    position: relative;
+    top: 60px;
+    color: white;
+}
+
+.WomanAtWar {
+    background-color: #3e3838;
+    color: white;
     width: 800px;
     height: 600px;
     position: relative;
     left: 100px;
     padding: 50px;
 }
-.starphoto{
-background-image:url(images/LEGENDARY/star.jpg);
-background-repeat: no-repeat;
-    background-position: 0% 25%;
+
+.womanphoto {
+    background-image: url(images/LEGENDARY/woman.jpg);
     background-size: cover;
-    height: 200px;
+    height: 225px;
     width: 550px;
+    background-repeat: no-repeat;
     position: relative;
     left: 75px;
-
+    top: 40px;
+    background-position-y: 95%;
 }
-.articleStar{
+
+.articlewoman {
     position: relative;
-    top: 0px;
-    bottom: 150px;
-
+    top: 75px;
 }
-/* .WomanAtWar{
-    background-color: #3e3838;
+
+footer {
+
+    background-color: black;
     color: white;
+    height: 160px;
     width: 800px;
-    height: 700px;
     position: relative;
     left: 100px;
-    padding: 50px;
-    background-image: url(images/LEGENDARY/woman.jpg);
-    background-size: 550px;
-    background-repeat: no-repeat;
-    background-position: 55% 65%
-} */
+}
+
+.footerlogo {
+    padding: 25px;
+    position: relative;
+    left: 50px;
+}
+
+span {
+    color: #efe784;
+
+}
