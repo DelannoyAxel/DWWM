@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: aliceblue;
+    padding: 2%;
+}
+
+header {
+    background-color: aqua;
+    width: 80%;
+    height: 10vh;
+}
+
+.container {
+    display: flex;
+    gap: 2%;
+    padding: 2% 0%;
+}
+
+.aside {
+    background-color: green;
+    width: 25%;
+    height: 50vh;
+}
+
+.bside {
+    background-color: #ff9a03;
+    width: 53%;
+    height: 50vh;
+    // propriété pour les carrés
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    padding-bottom: 5%;
+    // propriété pour les carrés
+
+    :nth-child(1) {
+        background-color: yellow;
+        height: 100px;
+        flex-basis: 20%;
+    }
+
+    :nth-child(2) {
+        background-color: yellow;
+        height: 100px;
+        flex-basis: 20%;
+    }
+
+    :nth-child(3) {
+        background-color: yellow;
+        height: 100px;
+        flex-basis: 20%;
+    }
+}
+
+footer {
+    background-color: aqua;
+    width: 80%;
+    height: 10vh;
+}

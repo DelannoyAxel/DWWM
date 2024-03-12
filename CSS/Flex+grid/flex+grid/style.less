@@ -1,0 +1,67 @@
+body {
+    background-color: rgb(172, 127, 168);
+    padding: 10px;
+}
+
+header {
+    background-color: aqua;
+    width: 80%;
+    height: 10vh;
+}
+
+.container {
+    display: flex;
+    gap: 2%;
+    padding: 2% 0%;
+}
+
+.aside {
+    background-color: green;
+    width: 25%;
+    height: 50vh;
+}
+
+.bside {
+    background-color: rgb(211, 146, 7);
+    width: 53%;
+    height: 50vh;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(6, 65px);
+
+    :nth-child(1) {
+        background-color: rgb(250, 234, 16);
+        grid-column-start: 3;
+        grid-column-end: 5;
+        grid-row-start: 4;
+        grid-row-end: 6;
+        min-width: 75px;
+        min-height: 100px;
+    }
+
+    :nth-child(2) {
+        background-color: rgb(250, 234, 16);
+        grid-column-start: 6;
+        grid-column-end: 8;
+        grid-row-start: 4;
+        grid-row-end: 6;
+        min-width: 75px;
+        min-height: 100px;
+    }
+
+    :nth-child(3) {
+        background-color: rgb(250, 234, 16);
+        grid-column-start: 9;
+        grid-column-end: 11;
+        grid-row-start: 4;
+        grid-row-end: 6;
+        min-width: 75px;
+        min-height: 100px;
+    }
+}
+
+footer {
+    background-color: aqua;
+    width: 80%;
+    height: 10vh;
+}
