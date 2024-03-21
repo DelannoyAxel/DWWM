@@ -40,20 +40,20 @@ header {
 
     :nth-child(1) {
         background-color: yellow;
-        height: 100px;
-        flex-basis: 20%;
+        height: 250px;
+        flex-basis: 25%;
     }
 
     :nth-child(2) {
         background-color: yellow;
-        height: 100px;
-        flex-basis: 20%;
+        height: 250px;
+        flex-basis: 25%;
     }
 
     :nth-child(3) {
         background-color: yellow;
-        height: 100px;
-        flex-basis: 20%;
+        height: 250px;
+        flex-basis: 25%;
     }
 }
 
@@ -61,4 +61,59 @@ footer {
     background-color: aqua;
     width: 80%;
     height: 10vh;
+}
+
+// media qwery 
+
+@media screen and (max-width:375px) {
+   
+    .container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 20px;
+
+    }
+
+    header {
+        width: 100%;
+        
+    }
+
+    .aside {
+        background-color: red;
+        width: 100%;
+        
+    }
+
+    .bside {
+        flex-direction: column;
+        align-items: flex-start;
+        padding-left: 50px;
+        width: 100%;
+
+        :nth-child(1) {
+            background-color: yellow;
+            height: 250px;
+            width: 80%;
+        }
+
+        :nth-child(2) {
+            background-color: yellow;
+            height: 250px;
+            width: 80%;
+        }
+
+        :nth-child(3) {
+            background-color: yellow;
+            // height: 550px;
+            width: 80%;
+        }
+
+    }
+
+    footer {
+        width: 100%;
+
+    }
+
 }

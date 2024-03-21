@@ -1,0 +1,271 @@
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  width: 1000px;
+}
+main {
+  background-color: #efe784;
+  width: 1000px;
+  margin-left: 500px;
+}
+main header {
+  background-image: url(images/LEGENDARY/header.jpg);
+  background-repeat: no-repeat;
+  width: 800px;
+  height: 300px;
+  position: relative;
+  top: 0px;
+  left: 100px;
+}
+main header :nth-child(1) {
+  position: relative;
+  top: 50px;
+  left: 200px;
+}
+main header :nth-child(2) {
+  color: #efe784;
+  font-size: 2rem;
+  letter-spacing: 20px;
+  position: relative;
+  top: 80px;
+  text-align: center;
+}
+main .intro {
+  background-color: #3e3838;
+  color: #efe784;
+  width: 800px;
+  height: 300px;
+  position: relative;
+  left: 100px;
+  padding: 50px;
+  text-align: center;
+}
+main .intro :nth-child(1) {
+  position: relative;
+  font-size: 1rem;
+  bottom: 30px;
+  letter-spacing: 10px;
+  border-top: 1px solid #efe784;
+  border-bottom: 1px solid #efe784;
+  display: inline;
+  padding: 5px;
+}
+main .intro :nth-child(2) {
+  padding: 0px 75px 0px 75px;
+}
+main .avengers {
+  background-color: white;
+  color: #282828;
+  width: 800px;
+  height: 600px;
+  position: relative;
+  left: 100px;
+  padding: 50px;
+  text-align: center;
+}
+main .avengers :nth-child(1) {
+  text-align: left;
+  padding-left: 35px;
+  padding-bottom: 20px;
+}
+main .avengers :nth-child(2) {
+  text-align: left;
+  padding: 20px 20px 50px 70px;
+}
+main .avengers :nth-child(3) {
+  background-image: url(images/LEGENDARY/avengers.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+  width: 550px;
+  position: relative;
+  left: 75px;
+}
+main .avengers :nth-child(4) {
+  color: #6cbcb3;
+  position: relative;
+  top: 50px;
+  left: 75px;
+  text-align: left;
+}
+main .aStarIsBorn {
+  background-color: #6cbcb3;
+  color: #3e3838;
+  width: 800px;
+  height: 550px;
+  position: relative;
+  left: 100px;
+  padding: 50px;
+}
+main .aStarIsBorn :nth-child(1) {
+  text-align: left;
+  padding-left: 70px;
+  padding-bottom: 20px;
+}
+main .aStarIsBorn :nth-child(2) {
+  text-align: left;
+  padding: 20px 20px 50px 70px;
+}
+main .aStarIsBorn :nth-child(3) {
+  background-image: url(images/LEGENDARY/star.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 200px;
+  width: 550px;
+  position: relative;
+  left: 75px;
+}
+main .aStarIsBorn :nth-child(4) {
+  position: relative;
+  top: 50px;
+  color: white;
+  padding-left: 75px;
+}
+main .WomanAtWar {
+  background-color: #3e3838;
+  color: white;
+  width: 800px;
+  height: 600px;
+  position: relative;
+  left: 100px;
+  padding: 50px;
+}
+main .WomanAtWar :nth-child(1) {
+  text-align: left;
+  padding-left: 75px;
+  padding-bottom: 20px;
+}
+main .WomanAtWar :nth-child(2) {
+  padding: 0px 75px 0px 75px;
+}
+main .WomanAtWar :nth-child(3) {
+  background-image: url(images/LEGENDARY/woman.jpg);
+  background-size: cover;
+  height: 225px;
+  width: 550px;
+  background-repeat: no-repeat;
+  position: relative;
+  left: 75px;
+  top: 40px;
+  background-position-y: 95%;
+}
+main .WomanAtWar :nth-child(4) {
+  position: relative;
+  top: 75px;
+  left: 75px;
+}
+main footer {
+  background-color: black;
+  color: white;
+  height: 160px;
+  width: 800px;
+  position: relative;
+  left: 100px;
+}
+main footer :nth-child(1) {
+  padding: 25px;
+  position: relative;
+  left: 50px;
+}
+main footer :nth-child(2) {
+  padding: 0px 75px 0px 75px;
+}
+@media screen and (max-width: 360px) {
+  html * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  main {
+    background-color: black;
+    width: 360px;
+    margin-left: 0px;
+    padding-left: 0px;
+  }
+  main header {
+    background-image: url("images/LEGENDARY/header-small.jpg");
+    background-repeat: no-repeat;
+    width: 360px;
+    position: relative;
+    top: 0px;
+    left: 5px;
+  }
+  main header :nth-child(1) {
+    position: relative;
+    top: 25px;
+    left: 80px;
+    width: 200px;
+  }
+  main header :nth-child(2) {
+    color: #efe784;
+    font-size: 14px;
+    letter-spacing: 10px;
+    position: relative;
+    top: 30px;
+    text-align: center;
+  }
+  main .intro {
+    background-color: #3e3838;
+    color: #efe784;
+    width: 360px;
+    height: 550px;
+    position: relative;
+    left: 0px;
+    bottom: 175px;
+    text-align: center;
+  }
+  main .intro :nth-child(1) {
+    position: relative;
+    font-size: 12px;
+    bottom: 30px;
+    letter-spacing: 10px;
+    border-top: 1px solid #efe784;
+    border-bottom: 1px solid #efe784;
+    display: inline;
+    padding: 5px;
+  }
+  main .intro :nth-child(2) {
+    padding: 0px;
+    line-height: 30px;
+  }
+  main .avengers {
+    background-color: white;
+    color: #282828;
+    width: 360px;
+    height: 800px;
+    position: relative;
+    left: 0px;
+    padding: 50px;
+    bottom: 175px;
+    text-align: center;
+  }
+  main .avengers :nth-child(1) {
+    font-size: 14px;
+    text-align: left;
+    padding-left: 5px;
+    padding-bottom: 5px;
+  }
+  main .avengers :nth-child(2) {
+    text-align: left;
+    padding: 20px 5px 50px 5px;
+  }
+  main .avengers :nth-child(3) {
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 200px;
+    width: 550px;
+    position: relative;
+    left: 75px;
+  }
+  main .avengers :nth-child(4) {
+    color: #6cbcb3;
+    position: relative;
+    top: 50px;
+    left: 75px;
+    text-align: left;
+  }
+}
