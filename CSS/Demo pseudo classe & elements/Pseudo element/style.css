@@ -1,0 +1,21 @@
+.required::after{
+    content: "*";
+color:red;
+font-size: 3rem;
+
+}
+
+.required::before{
+    content: "- ";
+    color: aqua;
+}
+.quote{
+    font-style: italic;
+    color: #333;
+}
+.quote::before{
+    content:"\201C"
+}
+.quote::after{
+    content:"\201D"
+}
