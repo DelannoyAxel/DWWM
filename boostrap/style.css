@@ -5,3 +5,14 @@
 video{
     object-fit: cover;
 }
+
+.parallax {
+    background-image: url("./img/parallax.jpg");
+    min-height: 200px;
+    width: 100%;
+    BACKGROUND-ATTACHMENT: FIXED;
+    BACKGROUND-POSITION: CENTER;
+    BACKGROUND-REPEAT: NO-REPEAT;
+    BACKGROUND-SIZE: COVER;
+
+}
