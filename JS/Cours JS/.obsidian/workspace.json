@@ -1,0 +1,175 @@
+{
+  "main": {
+    "id": "bfd6f53797b108f2",
+    "type": "split",
+    "children": [
+      {
+        "id": "5b05209af6e384c9",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "2c0b8b2ed54d96c4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Aide mémoire - Tableaux.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "1ab9b441f41b39fe",
+    "type": "split",
+    "children": [
+      {
+        "id": "d24128726840e2cc",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bde50f1eb85ab7b9",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9e9752d37c3e011b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3d9b9004d6369fa4",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "dd465d41213e7990",
+    "type": "split",
+    "children": [
+      {
+        "id": "5c998a018a03e23d",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "05071c1202a30e9c",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Aide mémoire - Tableaux.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "8d07ca24ec547a1b",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Aide mémoire - Tableaux.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "89cd1a394d54784d",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "e69e8f03e65b200a",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Aide mémoire - Tableaux.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Ouvrir le sélecteur rapide": false,
+      "graph:Ouvrir la vue graphique": false,
+      "canvas:Créer une nouvelle toile": false,
+      "daily-notes:Ouvrir la note quotidienne": false,
+      "templates:Insérer le modèle": false,
+      "command-palette:Ouvrir la palette de commandes": false
+    }
+  },
+  "active": "2c0b8b2ed54d96c4",
+  "lastOpenFiles": [
+    "Aide mémoire - Manipulation du DOM.md",
+    "Aide mémoire - Général.md",
+    "Exercices/Exercices - Manipulation du DOM.md",
+    "Exercices/Exercices - Fonctions.md",
+    "Exercices/Exercices - Conditions & boucles.md",
+    "Aide mémoire - Tableaux.md",
+    "cours/3- Manipulation du DOM.md",
+    "cours/2- Syntaxe de base.md",
+    "cours/1- Introduction à JavaScript.md",
+    "Exercices/Exercices - Algo de base.md",
+    "Note perso JS.md",
+    "Sommaire.md",
+    "Exercices",
+    "cours/9- Bonnes Pratiques et Débogage.md",
+    "cours/8- Frameworks JavaScript.md",
+    "cours/7- AJAX (Asynchronous JavaScript and XML).md",
+    "cours/6- Concepts Avancés.md",
+    "cours/5- Fonctions avancées.md",
+    "cours/4- Gestion des tableaux et Objets.md",
+    "exercise",
+    "cours",
+    "coursjs-main",
+    "Welcome.md"
+  ]
+}
