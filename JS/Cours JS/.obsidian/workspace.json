@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Aide mémoire - Tableaux.md",
+                "file": "Jeux TPT.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Aide mémoire - Tableaux.md",
+                "file": "Jeux TPT.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Aide mémoire - Tableaux.md",
+                "file": "Jeux TPT.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Aide mémoire - Tableaux.md"
+                "file": "Jeux TPT.md"
               }
             }
           }
@@ -148,12 +148,13 @@
   },
   "active": "2c0b8b2ed54d96c4",
   "lastOpenFiles": [
+    "Aide mémoire - Tableaux.md",
+    "Jeux TPT.md",
     "Aide mémoire - Manipulation du DOM.md",
     "Aide mémoire - Général.md",
     "Exercices/Exercices - Manipulation du DOM.md",
     "Exercices/Exercices - Fonctions.md",
     "Exercices/Exercices - Conditions & boucles.md",
-    "Aide mémoire - Tableaux.md",
     "cours/3- Manipulation du DOM.md",
     "cours/2- Syntaxe de base.md",
     "cours/1- Introduction à JavaScript.md",
