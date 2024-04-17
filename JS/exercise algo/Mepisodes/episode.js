@@ -10,13 +10,6 @@ fetch("https://rickandmortyapi.com/api/episode?page=1")
     const body = document.querySelector ('body')
     body.style.height = '100vh'
 
-    // container = document.createElement ('div')
-    // document.body.appendChild(container)
-    // container.style.display = 'flex'
-    // container.style.flexWrap = 'wrap'; 
-    // container.style.width = '100vw'
-    // container.style.gap = '50px'
-
     setTimeout(() => {
         const episodeTable = document.getElementById('episodeTable').getElementsByTagName('tbody')[0];
     
