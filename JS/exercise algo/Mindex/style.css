@@ -1,0 +1,24 @@
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav {
+  width: 80%;
+  height: 5%;
+  background-color: pink;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+nav .containerNav {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  font-size: 2rem;
+}
