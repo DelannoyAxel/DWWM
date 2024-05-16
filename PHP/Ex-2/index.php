@@ -39,7 +39,7 @@
 // }elseif( $saisie < 0){
 //     echo " tu as écrit un nombre négatif !";
 // }else{
-//     echo "FALTAL ERROR 404 : YOU ARE DEAD";
+//     echo "tu as écrit un nombre nul";
 // }
 
 // 4°) Ecrire un algorithme qui demande deux nombres à l’utilisateur et l’informe ensuite si le
@@ -65,32 +65,127 @@
 // • "Minime" de 10 à 11 ans
 // • "Cadet" après 12 ans
 
-// $saisie = readline("écrit ton age ");
+$saisie = readline("écrit ton age ");
 
-// switch ($saisie) {
-//     case ($saisie >= 6 && $saisie <= 7):
-//         echo "Poussin";
-//     break;
-//     case ($saisie >= 8 && $saisie <=9):
-//         echo "Pupille";
+switch ($saisie) {
+    case ($saisie >= 6 && $saisie <= 7):
+        echo "Poussin";
+    break;
+    case ($saisie >= 8 && $saisie <=9):
+        echo "Pupille";
+        break;
+    case ($saisie >= 10 && $saisie <= 11):
+        echo "Minime";
+    break;
+    case ($saisie >= 12):
+        echo "Cadet";
+        break;
+    default:
+        echo "Pas d'age";
+    break;
+    }
+
+//    **
+// // Partie 3 Exercice 6
+//    **
+
+
+// $heure = readline('Entrez une heure : ');
+// $minute = readline('Entrez une minute : ') + 1;
+
+// // Si les minutes dépassent 59, on ajuste l'heure et les minutes
+
+// if ($minute >= 60) {
+//     $heure += 1;
+//     $minute -= 60;
+// }
+// if ($heure >=24 ){
+//     $heure-=24 ;
+// }
+
+// echo "Dans une minute, il sera $heure heure(s) et $minute minute(s).";
+
+//    **
+// // Partie 3 Exercice 7
+// //    **
+
+
+// $heure = readline('Entrez une heure : ');
+// $minute = readline('Entrez une minute : ');
+// $seconde = readline('Entrez une seconde : ') + 1;
+// // Si les secondes dépassent 59, on ajuste les secondes et les minutes
+// if ($seconde >= 60) {
+//     $minute += 1;
+//     $seconde -= 60;
+// }
+
+// // Si les minutes dépassent 59, on ajuste l'heure et les minutes
+
+// if ($minute >= 60) {
+//     $heure += 1;
+//     $minute -= 60;
+// }
+
+
+// if ($heure >=24 ){
+//     $heure-=24 ;
+// }
+
+
+// echo "Dans une seconde, il sera $heure heure(s), $minute minute(s) et $seconde seconde(s) .";
+
+
+//    **
+// // Partie 3 Exercice 8
+// //    **
+
+//EXERCICE 8
+// $nbPhotocopies = readline("Entrez le nombre de photocopies : ");
+// $prix;
+// switch(true){
+//     case ($nbPhotocopies <= 10):
+//         $prix = $nbPhotocopies * 0.10;
 //         break;
-//     case ($saisie >= 10 && $saisie <= 11):
-//         echo "Minime";
-//     break;
-//     case ($saisie >= 12):
-//         echo "Cadet";
+    
+//     case ($nbPhotocopies <= 30):
+//         $prix = 10 * 0.10 + ($nbPhotocopies - 10) * 0.09 ;
 //         break;
+
+//     case ($nbPhotocopies > 30):
+//         $prix = 10 * 0.10 + 20 * 0.09 + ($nbPhotocopies - 30) * 0.08;
+//         break;
+
 //     default:
-//         echo "Pas d'age";
-//     break;
-//     }
+//         echo "Valeur incorrecte";
+//         break;   
+// }
+// echo "La facture des photocopies est de $prix €.\n\n";
 
-// 6°) Cet algorithme est destiné à prédire l'avenir, et il doit être infaillible !
-// Il lira au clavier l’heure et les minutes, et il affichera l’heure qu’il sera une minute plus tard. Par
-// exemple, si l'utilisateur tape 21 puis 32, l'algorithme doit répondre :
-// "Dans une minute, il sera 21 heures(s) 33".
-// NB : on suppose que l'utilisateur entre une heure valide. Pas besoin donc de la vérifier.
+//    **
+// // Partie 3 Exercice 9
+// //    **
 
-$saisie = readline("écrit l'heure: ");
+// $sexe = readline("Indiquez votre sexe : ");
+// $age = readline("Indiquez votre age : ");
 
-echo "Dans une minute il sera " , $saisie++;
+// if($sexe == "Homme" && $age >= 20){
+//     echo "Vous êtes imposable";
+// }elseif($sexe == "Femme" && $age >=18 && $age <=35 ){
+//     echo "Vous êtes imposable";
+// }else{
+//     echo "Vous ne payez pas d'impots !";
+// }
+
+//    **
+// // Partie 3 Exercice 10
+// //    **
+
+// $userDay = readline('Veuillez entrer le jour : ');
+// $userMonth = readline('Veuillez entrer le mois : ');
+// $userYear = readline('Veuillez entrer l\'année : ');
+
+// if ($userYear % 4 === 0 && ($userYear % 400 === 0 || !($userYear % 100 === 0))) {
+//     echo "L'année {$userYear} est bissextile"; 
+// } else {
+//     echo "L'année n'est pas bissextile";
+// }
