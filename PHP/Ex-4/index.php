@@ -47,19 +47,19 @@
 // 4°) Écrire un programme qui permet de saisir 5 nombres entiers et d’afficher le plus grand nombre à
 // la fin et le plus petit.
 
-$saisie1 = readline("entrez un nombre: ");
-$valeurMax = $saisie1;
-$valeurMin = $saisie1;
+// $saisie1 = readline("entrez un nombre: ");
+// $valeurMax = $saisie1;
+// $valeurMin = $saisie1;
 
-for ($i=1; $i < 5 ; $i++) { 
-    $saisie1 = readline("entrez un nombre: ");
+// for ($i=1; $i < 5 ; $i++) { 
+//     $saisie1 = readline("entrez un nombre: ");
 
-    if ($valeurMax < $saisie1){
-        $saisie1 = $valeurMax ;
-    }elseif($valeurMin > $saisie1){
-        $saisie1 = $valeurMin ;
-    }
-}
+//     if ($valeurMax < $saisie1){
+//         $saisie1 = $valeurMax ;
+//     }elseif($valeurMin > $saisie1){
+//         $saisie1 = $valeurMin ;
+//     }
+// }
 
-echo $valeurMax;
-echo $valeurMin;
+// echo $valeurMax;
+// echo $valeurMin;

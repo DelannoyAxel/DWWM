@@ -164,29 +164,78 @@
 // 1°) Soit un tableau T à deux dimensions (12, 8) préalablement rempli de valeurs numériques.
 // Écrire un algorithme qui recherche la plus grande valeur au sein de ce tableau
 
-$T = [
-    [3, 1, 4, 1, 5, 9, 2, 6],
-    [5, 3, 5, 8, 9, 7, 9, 3],
-    [2, 3, 8, 4, 6, 2, 6, 4],
-    [3, 3, 8, 3, 2, 7, 9, 5],
-    [1, 0, 2, 5, 3, 5, 8, 9],
-    [7, 9, 3, 2, 300, 8, 4, 6],
-    [2, 7, 1, 0, 2, 8, 4, 1],
-    [4, 2, 9, 1, 6, 5, 3, 5],
-    [8, 9, 7, 9, 3, 2, 3, 8],
-    [4, 6, 2, 6, 4, 7, 3, 1],
-    [5, 9, 2, 7, 1, 4, 6, 5],
-    [9, 7, 9, 3, 2, 1, 0, 8]
-];
+// $T = [
+//     [3, 1, 4, 1, 5, 9, 2, 6],
+//     [5, 3, 5, 8, 9, 7, 9, 3],
+//     [2, 3, 8, 4, 6, 2, 6, 4],
+//     [3, 3, 8, 3, 2, 7, 9, 5],
+//     [1, 0, 2, 5, 3, 5, 8, 9],
+//     [7, 9, 3, 2, 300, 8, 4, 6],
+//     [2, 7, 1, 0, 2, 8, 4, 1],
+//     [4, 2, 9, 1, 6, 5, 3, 5],
+//     [8, 9, 7, 9, 3, 2, 3, 8],
+//     [4, 6, 2, 6, 4, 7, 3, 1],
+//     [5, 9, 2, 7, 1, 4, 6, 5],
+//     [9, 7, 9, 3, 2, 1, 0, 8]
+// ];
 
-$valeurMax = 0;
+// $valeurMax = 0;
 
-for ($i=0; $i < 12 ; $i++) { 
-    for ($j= 0; $j < 8 ; $j++) { 
-        if ($T[$i][$j] > $valeurMax) {
-            $valeurMax = $T[$i][$j];
-        }
-    }
-}
+// for ($i=0; $i < 12 ; $i++) { 
+//     for ($j= 0; $j < 8 ; $j++) { 
+//         if ($T[$i][$j] > $valeurMax) {
+//             $valeurMax = $T[$i][$j];
+//         }
+//     }
+// }
 
-echo " la plus grande valeur de ce tableau multidimentionnel est : " , $valeurMax;
+// echo " la plus grande valeur de ce tableau multidimentionnel est : " , $valeurMax;
+
+// 2°) 1. Pour chacune des figures suivantes, écrire et commenter votre algorithme 
+
+// $etoile = "*";
+
+// $tab = [];
+
+
+// for ($i=1; $i <= 7; $i++) { 
+// $ligne = str_repeat($etoile, $i);
+// array_push($tab, $ligne);
+// }
+
+// for ($i= 6 ; $i >= 1 ; $i--) { 
+//     $ligne = str_repeat($etoile , $i);
+//     array_push($tab, $ligne);
+// }
+
+// foreach ($tab as $ligne) {
+// echo $ligne , "\n";
+// }
+
+//  J'initialise une variable etoile ainsi que mon tableau, ensuite, je viens faire une boucle for qui tant que l'index est plus petit ou egal a 6 elle increase , je declare la constante $ligne  et je viens lui atribué la valeur de etoile et je lui demande avec la fonction str repeat de repeté la variable etoile autant de fois que la position de l'index dans la boucle puis je push dans le tableau la ligne , je fais le même principe avec la deuxieme boucle for mais cette fois je viens decrease si l'index est = a 5 et tant qu'il sera plus grand ou egal a 1 et je re push la ligne dans le tabeleau, puis pour l'affichage du resulat je demande a la boucle foreach de parcourir toute les ligne du tableau avec un saut de ligne a chaque ligne pour afficher la figure voulu
+
+// 2°) 2.Pour chacune des figures suivantes, écrire et commenter votre algorithme 
+
+
+// $tab =[];
+// $etoile = "X";
+// $rond = "0" ;
+
+// for ($i=0; $i < 8; $i++) { 
+//     $ligne = str_repeat($etoile, $i);
+    
+//     if ($i < 3 || $i > 6) {
+//         array_push($tab, $ligne);
+//     }else{
+//         $ligne = str_repeat($etoile, 1) . str_repeat($rond, $i - 2) . str_repeat($etoile, 1);
+//         array_push($tab, $ligne);
+
+//     }
+// }
+
+// foreach ($tab as $ligne) {
+//     echo $ligne , "\n";
+// }
+
+
+    
