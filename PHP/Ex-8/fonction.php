@@ -2,6 +2,7 @@
 
 // Objectif : Vous devez créer un programme PHP qui permet de gérer un répertoire téléphonique en
 // utilisant des fonctions
+
 // 1. Créer un tableau pour stocker les contacts
 // 2. Définir les fonctions suivantes :
 //  Ajouter un nouveau contact au répertoire
@@ -13,40 +14,40 @@
 // par nom, afficher tous les contacts ou quitter le programme
 
 
+$repertoire = [];
 
-// function nouveauContact($repertoire) {
-//     $nom = readline("Entrer le nom de votre contact: ");
-//     $prenom = readline("Entrer le prénom de votre contact: ");
-//     $tel = readline("Entrer le numéro de téléphone de votre contact: ");
-
-//     $contact = [
-//         "nom" => $nom,
-//         "prenom" => $prenom,
-//         "tel" => $tel
-//     ];
-    
-//     $repertoire[] = $contact;
-
-
-// }
-
-function rechercheContact($repertoire) {
-    $recherche = readline("Entrer le nom de votre contact : ");
-
-    foreach ($repertoire as $contact) {
-        if ($contact['nom'] === $recherche) {
-            return $contact;
-        }
-    }
-
-    return null;
+// Fonction pour ajouter des contacts
+function PushTabl($nom, $numero) {
+    global $repertoire;
+    array_push($repertoire, [$nom, $numero]);
+    echo "**********************************************\n";
+    echo "Contact ajouté : $nom, $numero\n \n";
+    echo "**********************************************\n";
 }
 
-function toutAfficher($repertoire){
+// Fonction pour rechercher un contact
+function recherche($nom) {
+    global $repertoire;
     foreach ($repertoire as $contact) {
-        echo "Voici les informations de votre contact : \n";
-        echo "Nom : " . $contact . "\n";
-        echo "Prénom : " . $contact . "\n";
-        echo "Téléphone : " . $contact. "\n";
+        if ($contact[0] === $nom) {
+            return $contact[1];
+        }
+    }
+    return "Contact non trouvé \n";
+}
+
+// Fonction pour voir tout les contacts
+function toutVoir() {
+    global $repertoire;
+    if (count($repertoire) === 0) {
+        echo "**********************************\n";
+        echo "Le répertoire est vide.\n";
+        echo "**********************************\n";
+    } else {
+        foreach ($repertoire as $contact) {
+            
+            echo "\n".$contact[0] . " " . $contact[1]."\n";
+            
+        }
     }
 }
