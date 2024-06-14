@@ -35,7 +35,7 @@ if (isset($error)) {
             echo "<td>" . htmlspecialchars($user['email']) . "</td>";
             echo "<td>" . htmlspecialchars($user['telephone']) . "</td>";
             echo "<td>";
-            echo "<a href='edit.php?id=" . $user['id'] . "'>Modifier</a> | ";
+            echo "<a href='update.php?id=" . $user['id'] . "'>Modifier</a> | ";
             echo "<a href='delete.php?id=" . $user['id'] . "' onclick='return confirm(\"Êtes-vous sûr de vouloir supprimer cet utilisateur ?\")'>Supprimer</a>";
             echo "</td>";
             echo "</tr>";
