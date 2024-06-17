@@ -25,7 +25,7 @@ if (isset($error)) {
 } else {
     if (count($users) > 0) {
         echo "<table>";
-        echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Téléphone</th><th>Action</th></tr>";
+        echo "<tr><th>ID</th><th>Nom</th><th>Prénom</th><th>Email</th><th>Password</th><th>Téléphone</th><th>Action</th></tr>";
 
         foreach ($users as $user) {
             echo "<tr>";
@@ -33,6 +33,7 @@ if (isset($error)) {
             echo "<td>" . htmlspecialchars($user['nom']) . "</td>";
             echo "<td>" . htmlspecialchars($user['prenom']) . "</td>";
             echo "<td>" . htmlspecialchars($user['email']) . "</td>";
+            echo "<td>" . htmlspecialchars($user['pwd']) . "</td>";
             echo "<td>" . htmlspecialchars($user['telephone']) . "</td>";
             echo "<td>";
             echo "<a href='update.php?id=" . $user['id'] . "'>Modifier</a> | ";

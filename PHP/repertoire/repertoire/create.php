@@ -4,17 +4,19 @@ require_once "auth.php";
 
 verifAdmin();
 
-if(isset($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['telephone'],$_POST['role'])){
+if(isset($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['pwd'],$_POST['telephone'],$_POST['role'])){
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
+    $password = $_POST['pwd'];
+    $password = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
     $telephone = $_POST['telephone'];
     $role = $_POST['role'];
 
     $pdo = getPDOConnexion();
 
-    $stmt = $pdo->prepare('INSERT INTO users(nom, prenom,email,telephone) VALUES (?, ?, ?, ?)');
-    $stmt->execute([$nom,$prenom,$email,$telephone]);
+    $stmt = $pdo->prepare('INSERT INTO users(nom, prenom,email,pwd,telephone) VALUES (?, ?, ?, ?, ?)');
+    $stmt->execute([$nom,$prenom,$email,$password,$telephone]);
 
     $userId = $pdo->lastInsertId();
 
@@ -39,8 +41,11 @@ if(isset($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['telephone'],$_PO
         <label for="prenom">Prénom:</label>
         <input type="text" name="prenom" required><br>
 
-        <label for="email">Email:</label>
-        <input type="email" name="email" required><br>
+        <label for="email">Email :</label>
+        <input type="email" name="email" id="email" required>
+
+        <label for="pwd">Password:</label>
+        <input type="password" name="pwd" id="pwd" required><br>
 
         <label for="telephone">Téléphone:</label>
         <input type="text" name="telephone" required><br>

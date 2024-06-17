@@ -24,41 +24,69 @@ if (isset($_GET['id'])) {
     $error = "Aucun ID d'utilisateur fourni.";
 }
 
-// Vérifiez si le formulaire est soumis
+// Vérifie si le formulaire est soumis
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Obtenez les données utilisateur du formulaire
+    // recupere les données utilisateur du formulaire
     $userId = $_POST['id'];
     $userName = $_POST['nom'];
     $userPrenom = $_POST['prenom'];
-    $userEmail = $_POST['email'];
     $userTelephone = $_POST['telephone'];
     $userRole = $_POST['role'];
 
-    // Effectuez la mise à jour
-    try {
-        $stmt = $pdo->prepare('UPDATE users SET nom = ?, prenom = ?, email = ?, telephone = ? WHERE id = ?');
-        $stmt->execute([
-            $userName,
-            $userPrenom,
-            $userEmail,
-            $userTelephone,
-            $userId
-        ]);
+    // Vérifie si un nouveau mot de passe est soumis
+    if (!empty($_POST['pwd'])) {
+        $userpassword = password_hash($_POST['pwd'], PASSWORD_DEFAULT);
+        // Effectue la mise à jour avec le nouveau mot de passe hashé
+        try {
+            $stmt = $pdo->prepare('UPDATE users SET nom = ?, prenom = ?, pwd = ?, telephone = ? WHERE id = ?');
+            $stmt->execute([
+                $userName,
+                $userPrenom,
+                $userpassword,
+                $userTelephone,
+                $userId
+            ]);
 
-        $stmt = $pdo->prepare('UPDATE userroles SET role = ? WHERE user_id = ?');
-        $stmt->execute([
-            $userRole,
-            $userId
-        ]);
+            $stmt = $pdo->prepare('UPDATE userroles SET role = ? WHERE user_id = ?');
+            $stmt->execute([
+                $userRole,
+                $userId
+            ]);
 
-        // Redirection après la mise à jour
-        header('Location:read.php');
-        exit();
+            // Redirection après la mise à jour
+            header('Location: read.php');
+            exit();
 
-    } catch (PDOException $e) {
-        $error = "Erreur : " . $e->getMessage();
+        } catch (PDOException $e) {
+            $error = "Erreur : " . $e->getMessage();
+        }
+    } else {
+        // Si aucun nouveau mot de passe n'est soumis, met à jour sans changer le mot de passe
+        try {
+            $stmt = $pdo->prepare('UPDATE users SET nom = ?, prenom = ?, telephone = ? WHERE id = ?');
+            $stmt->execute([
+                $userName,
+                $userPrenom,
+                $userTelephone,
+                $userId
+            ]);
+
+            $stmt = $pdo->prepare('UPDATE userroles SET role = ? WHERE user_id = ?');
+            $stmt->execute([
+                $userRole,
+                $userId
+            ]);
+
+            // Redirection après la mise à jour
+            header('Location: read.php');
+            exit();
+
+        } catch (PDOException $e) {
+            $error = "Erreur : " . $e->getMessage();
+        }
     }
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -72,8 +100,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <p><?= $error; ?></p>
     <?php elseif (isset($user)) : ?>
         <div class="form-container">
-        <form action="update.php?id=<?= htmlspecialchars($user['id']); ?>" method="POST">
-
+            <form action="update.php?id=<?= htmlspecialchars($user['id']); ?>" method="POST">
+                <input type="hidden" name="id" value="<?= htmlspecialchars($user['id']); ?>">
                 <label for="nom">Nom:</label>
                 <input type="text" name="nom" value="<?= htmlspecialchars($user['nom']); ?>" required><br>
 
@@ -82,6 +110,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
                 <label for="email">Email:</label>
                 <input type="email" name="email" value="<?= htmlspecialchars($user['email']); ?>" required><br>
+
+                <label for="pwd">Nouveau Password:</label>
+                <input type="password" name="pwd" id="pwd"><br>
 
                 <label for="telephone">Téléphone:</label>
                 <input type="text" name="telephone" value="<?= htmlspecialchars($user['telephone']); ?>" required><br>
