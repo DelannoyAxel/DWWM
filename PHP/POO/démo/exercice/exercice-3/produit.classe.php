@@ -1,63 +1,79 @@
 <?php
 
-
-class Produit{
-
+class Produit {
 
     private $nom;
     private $prix;
     private $quantite;
+    private $quantiteVendue;
 
-
-    // constructeur
-    public function __construct($nom,$prix,$quantite) {
+    // Constructeur
+    public function __construct($nom, $prix, $quantite, $quantiteVendue = 0) {
         $this->nom = $nom;
-        $this->prix = $prix;
-        $this->quantite = $quantite;
-
+        $this->prix = floatval(str_replace("€", "", $prix));
+        $this->quantite = intval($quantite);
+        $this->quantiteVendue = intval($quantiteVendue);
     }
 
-
-
-    // getter
-
-    public function __getNom(){
+    // Getters
+    public function getNom() {
         return $this->nom;
     }
-    public function __getPrix()
-    { 
+
+    public function getPrix() {
         return $this->prix;
     }
-    public function __getQuantite()
-    {
+
+    public function getQuantite() {
         return $this->quantite;
     }
-   
 
-    // setter
+    public function getQuantiteVendue() {
+        return $this->quantiteVendue;
+    }
 
-    public function __setNom($nom)
-    {
+    // Setters
+    public function setNom($nom) {
         $this->nom = $nom;
     }
 
-    public function __setPrix($prix){
-        $this->prix = $prix;
+    public function setPrix($prix) {
+        $this->prix = floatval($prix);
     }
 
-    public function __setQuantite($quantite){
-        $this->quantite = $quantite;
+    public function setQuantite($quantite) {
+        $this->quantite = intval($quantite);
     }
 
+    public function setQuantiteVendue($quantiteVendue) {
+        $this->quantiteVendue = intval($quantiteVendue);
+    }
 
-
-    function affichage(){
-        echo "Nom : " . $this->nom . "<br>";
-        echo "Prix : " . $this->prix . "<br>" ;
+    // Méthodes de gestion
+    public function affichage() {
+        echo "<p>Nom : " . $this->nom . "<br>";
+        echo "Prix : " . $this->prix . "€<br>";
         echo "Quantité disponible : " . $this->quantite . "<br>";
-        echo"********************************************* <br>";
-
-
+        echo "Quantité vendue : " . $this->quantiteVendue . "<br>";
+        echo "********************************************* <br></p>";
     }
 
+    public function mettreAJourPrix($nouveauPrix) {
+        $this->prix = floatval($nouveauPrix);
+    }
+
+    public function ajouterStock($quantiteAjoutee) {
+        $this->quantite += intval($quantiteAjoutee);
+    }
+
+    public function vendreProduit($quantiteVendue) {
+        $quantiteVendue = intval($quantiteVendue);
+        if ($this->quantite >= $quantiteVendue) {
+            $this->quantite -= $quantiteVendue;
+            $this->quantiteVendue += $quantiteVendue;
+        } else {
+            echo "<p>Stock insuffisant pour $this->nom</p>";
+        }
+    }
 }
+?>

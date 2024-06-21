@@ -7,3 +7,5 @@ $eleve2 = new Stagiaire("Axel", [20, 12, 18, 5, 17]);
 $eleve1->affichage();
 $eleve2->affichage();
 ?>
+
+
