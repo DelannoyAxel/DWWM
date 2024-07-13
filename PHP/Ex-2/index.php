@@ -187,5 +187,5 @@ switch ($saisie) {
 // if ($userYear % 4 === 0 && ($userYear % 400 === 0 || !($userYear % 100 === 0))) {
 //     echo "L'année {$userYear} est bissextile"; 
 // } else {
-//     echo "L'année n'est pas bissextile";
+//     echo "L'année n'est pas bissextile"; yep
 // }
