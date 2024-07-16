@@ -9,12 +9,12 @@ class User {
         $this->pdo = MyDbConnection::getInstance();
     }
 
-    public function createUser($nom, $prenom, $email, $telephone, $password, $role) {
+    public function createUser($image, $nom, $prenom, $email, $telephone, $password, $role) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
         try {
-            $stmt = $this->pdo->prepare('INSERT INTO users (nom, prenom, email, telephone, pwd) VALUES (?, ?, ?, ?, ?)');
-            $stmt->execute([$nom, $prenom, $email, $telephone, $hashedPassword]);
+            $stmt = $this->pdo->prepare('INSERT INTO users (image_name, nom, prenom, email, telephone, password) VALUES (?, ?, ?, ?, ?, ?)');
+            $stmt->execute([$image, $nom, $prenom, $email, $telephone, $hashedPassword]);
 
             $userId = $this->pdo->lastInsertId();
 
@@ -37,10 +37,10 @@ class User {
         }
     }
 
-    public function updateUser($id, $nom, $prenom, $email, $telephone, $role) {
+    public function updateUser($id,$image,  $nom, $prenom, $email, $telephone, $role) {
         try {
-            $stmt = $this->pdo->prepare('UPDATE users SET nom = ?, prenom = ?, email = ?, telephone = ? WHERE id = ?');
-            $stmt->execute([$nom, $prenom, $email, $telephone, $id]);
+            $stmt = $this->pdo->prepare('UPDATE users SET image_name = ?, nom = ?, prenom = ?, email = ?, telephone = ? WHERE id = ?');
+            $stmt->execute([$image, $nom, $prenom, $email, $telephone, $id]);
 
             $stmt = $this->pdo->prepare('UPDATE UserRoles SET role = ? WHERE user_id = ?');
             $stmt->execute([$role, $id]);

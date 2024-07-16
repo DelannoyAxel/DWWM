@@ -1,14 +1,4 @@
-<?php
-ob_start();
-require_once '../entitites/Auth.class.php';
-require_once '../entitites/User.class.php';
-
-$auth = new Auth();
-$auth->verifierAdmin();
-
-$user = new User();
-$users = $user->getAllUsersRole();
-?>
+<?php ob_start(); ?>
 
 <table border="1">
     <tr>

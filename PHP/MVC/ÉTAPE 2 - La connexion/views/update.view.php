@@ -1,37 +1,5 @@
 <?php
 ob_start();
-require_once '../entitites/Auth.class.php';
-require_once '../entitites/User.class.php';
-
-$auth = new Auth();
-$auth->verifierAdmin();
-
-$user = new User();
-
-if (isset($_POST['id'], $_POST['image_name'], $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['role'])) {
-    $id = $_POST['id'];
-    $image = $_POST['image_name'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $email = $_POST['email'];
-    $telephone = $_POST['telephone'];
-    $role = $_POST['role'];
-
-    $message = $user->updateUser($id, $image, $nom, $prenom, $email, $telephone, $role);
-    echo $message;
-}
-
-if (isset($_GET['id'])) {
-    $utilisateur = $user->getUserById($_GET['id']);
-
-    if (!$utilisateur) {
-        echo "Utilisateur non trouvé.";
-        exit();
-    }
-} else {
-    echo "Aucun ID d'utilisateur fourni.";
-    exit();
-}
 ?>
 
 <div class="form-container">

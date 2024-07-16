@@ -7,8 +7,8 @@ abstract class DbConnect {
     protected function __construct() {
         // opérateur de fusion null ?:
         $host = getenv('DB_HOST') ?: 'localhost';
-        $port = getenv('DB_PORT') ?: '3306';
-        $db = getenv('DB_NAME') ?: 'repertoireV2';
+        $port = getenv('DB_PORT') ?: '3308';
+        $db = getenv('DB_NAME') ?: 'rep-v3';
         $user = getenv('DB_USER') ?: 'root';
         $pass = getenv('DB_PASS') ?: '';
         $charset = 'utf8mb4';
@@ -48,4 +48,4 @@ abstract class DbConnect {
         return self::$instance->pdo;
     }
 }
-?>
+

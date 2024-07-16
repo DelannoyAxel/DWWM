@@ -1,23 +1,21 @@
 <?php
 ob_start();
-require_once __DIR__ . '/../entitites/Auth.class.php';
-require_once __DIR__ . '/../dbConnect/MyDbConnection.php';
+require_once 'Auth.class.php';
+require_once 'MyDbConnection.php';
 
-
-$auth = new Auth();
-$auth->startSession();
+Auth::startSession();
 
 if (isset($_POST['email'], $_POST['password'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $pdo = MyDbConnection::getInstance(); 
-    $stmt = $pdo->prepare('SELECT id, password FROM users WHERE email = ?');
+    $stmt = $pdo->prepare('SELECT id, pwd FROM users WHERE email = ?');
     $stmt->execute([$email]);
     $user = $stmt->fetch();
 
-    if ($user && password_verify($password, $user['password'])) {
+    if ($user && password_verify($password, $user['pwd'])) {
         $_SESSION['user_id'] = $user['id'];
-        header('Location: ../index.php');
+        header('Location: index.php');
         exit();
     } else {
         $error = "Email ou mot de passe incorrect.";

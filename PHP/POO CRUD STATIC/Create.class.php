@@ -1,14 +1,12 @@
 <?php
 ob_start();
-require_once '../entitites/Auth.class.php';
-require_once '../dbConnect/MyDbConnection.php';
-require_once '../entitites/User.class.php';
+require_once 'Auth.class.php';
+require_once 'MyDbConnection.php';
+require_once 'User.class.php';
 
-$auth = new Auth();
-$auth->verifierAdmin();
+Auth::verifyAdmin();
 
-if (isset($_POST['image_name'], $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['password'], $_POST['role'])) {
-    $image = $_POST['image_name'];
+if (isset($_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['password'], $_POST['role'])) {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
@@ -16,8 +14,7 @@ if (isset($_POST['image_name'], $_POST['nom'], $_POST['prenom'], $_POST['email']
     $password = $_POST['password'];
     $role = $_POST['role'];
 
-    $user = new User();
-    $message = $user->createUser($image, $nom, $prenom, $email, $telephone, $password, $role);
+    $message = User::createUser($nom, $prenom, $email, $telephone, $password, $role);
     echo $message;
 } else {
     echo "Tous les champs du formulaire doivent être remplis.";
@@ -41,10 +38,6 @@ if (isset($_POST['image_name'], $_POST['nom'], $_POST['prenom'], $_POST['email']
             <option value="admin">Admin</option>
             <option value="non-admin">Non-Admin</option>
         </select><br>
-        <label for="image_name" class="custom-file-upload">
-                Sélectionner un fichier
-            </label>
-            <input type="file"  name="image_name"  id="image_name">
         <input type="submit" value="Ajouter">
     </form>
 </div>

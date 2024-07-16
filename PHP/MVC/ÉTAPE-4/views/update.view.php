@@ -1,43 +1,12 @@
 <?php
 ob_start();
-require_once '../entitites/Auth.class.php';
-require_once '../entitites/User.class.php';
-
-$auth = new Auth();
-$auth->verifierAdmin();
-
-$user = new User();
-
-if (isset($_POST['id'], $_POST['image_name'], $_POST['nom'], $_POST['prenom'], $_POST['email'], $_POST['telephone'], $_POST['role'])) {
-    $id = $_POST['id'];
-    $image = $_POST['image_name'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $email = $_POST['email'];
-    $telephone = $_POST['telephone'];
-    $role = $_POST['role'];
-
-    $message = $user->updateUser($id, $image, $nom, $prenom, $email, $telephone, $role);
-    echo $message;
-}
-
-if (isset($_GET['id'])) {
-    $utilisateur = $user->getUserById($_GET['id']);
-
-    if (!$utilisateur) {
-        echo "Utilisateur non trouvé.";
-        exit();
-    }
-} else {
-    echo "Aucun ID d'utilisateur fourni.";
-    exit();
-}
 ?>
 
 <div class="form-container">
     <?php if ($utilisateur) : ?>
-        <form method="POST">
+        <form method="POST" enctype="multipart/form-data" action="<?= URL ?>update">
             <input type="hidden" name="id" value="<?php echo htmlspecialchars($utilisateur['id']); ?>">
+            <input type="hidden" name="currentImage" value="<?php echo htmlspecialchars($utilisateur['image_name']); ?>">
             <label for="nom">Nom:</label>
             <input type="text" name="nom" value="<?php echo htmlspecialchars($utilisateur['nom']); ?>" required><br>
             <label for="prenom">Prénom:</label>
@@ -51,13 +20,8 @@ if (isset($_GET['id'])) {
                 <option value="admin" <?php if ($utilisateur['role'] == 'admin') echo 'selected'; ?>>Admin</option>
                 <option value="non-admin" <?php if ($utilisateur['role'] == 'non-admin') echo 'selected'; ?>>Non-Admin</option>
             </select><br>
-            <!-- Champ de sélection de fichier -->
-            <label for="image_name" class="custom-file-upload">
-                Sélectionner un fichier
-            </label>
-            <input type="file"  name="image_name"  id="image_name">
-
-
+            <label for="image">Image:</label>
+            <input type="file" name="image"><br>
             <input type="submit" value="Mettre à jour">
         </form>
     <?php else : ?>
@@ -69,4 +33,3 @@ if (isset($_GET['id'])) {
 $content = ob_get_clean();
 $titre = "Modifier un utilisateur";
 require "template.php";
-?>
