@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Delete{% endblock %}
+
+{% block body %}
+
+<form class="form-container" method="POST">
+    <label for="id">Utilisateur :</label>
+    <select name="id" required>
+        <?php foreach ($users as $user) : ?>
+            <option value="<?php echo htmlspecialchars($user['id']); ?>">
+                <?php echo htmlspecialchars($user['prenom'] . ' ' . $user['nom']); ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <input type="submit" value="Supprimer">
+
+    <?php if (isset($message)): ?>
+    <p><?php echo htmlspecialchars($message); ?></p>
+<?php endif; ?>
+</form>
+
+{% endblock %}

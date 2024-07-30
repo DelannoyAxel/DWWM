@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Page Afficher{% endblock %}
+
+{% block body %}
+
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Image</th>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Email</th>
+        <th>Téléphone</th>
+        <th>Rôle</th>
+        <th>Actions</th>
+    </tr>
+    <?php foreach ($users as $user): ?>
+    <tr>
+        <td><?= htmlspecialchars($user['id']) ?></td>
+        <td><img src="public/images/<?= htmlspecialchars($user['image_name']) ?>" alt="ImageProfil" width="80" height="80"></td>
+        <td><?= htmlspecialchars($user['nom']) ?></td>
+        <td><?= htmlspecialchars($user['prenom']) ?></td>
+        <td><?= htmlspecialchars($user['email']) ?></td>
+        <td><?= htmlspecialchars($user['telephone']) ?></td>
+        <td><?= htmlspecialchars($user['role']) ?></td>
+        <td><a href="<?= URL ?>update/<?php echo $user['id']; ?>">Modifier</a></td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+
+{% endblock %}
