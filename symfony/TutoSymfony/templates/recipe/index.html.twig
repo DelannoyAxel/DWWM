@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Toutes les recettes
+{% endblock %}
+
+{% block body %}
+	<p>ça va ou quoi la famille ici ta les recette de MR DELANNOY</p>
+	<ul>
+
+		<li><a href="{{ url("recipe.show", {id:32, slug: "pate-bolognaise"}) }}">des bonne Pâtes  à la bogolonaise , c ma ptite femme qui les fait  </a></li>
+	</ul>
+{% endblock %}
