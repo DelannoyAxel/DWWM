@@ -15,7 +15,7 @@
 			{% endblock %}
 		{% endblock %}
 	</head>
-	<body>
+	<body  class="bg-secondary">
 		<nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="{{ path('home') }}">Mon site</a>
@@ -31,7 +31,10 @@
 				</div>
 			</div>
 		</nav>
-		<div class="container my-4"> {% block body %}{% endblock %}
+		<div class="container my-4">
+		 {% include "partials/flash.html.twig" %}
+		
+		 {% block body %}{% endblock %}
 			</div>
 		</body>
 	</html>
