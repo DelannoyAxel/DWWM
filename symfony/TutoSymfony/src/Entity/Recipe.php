@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RecipeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
 class Recipe
@@ -18,9 +19,11 @@ class Recipe
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    // #[Assert\Regex('^[a-z0-9]+(?:-[a-z0-9]+)*$', message: "ceci n'est pas un slug valide")]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\Length(min: 20)]
     private ?string $content = null;
 
     #[ORM\Column]
@@ -30,6 +33,7 @@ class Recipe
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Positive()]
     private ?int $duration = null;
 
     public function getId(): ?int
