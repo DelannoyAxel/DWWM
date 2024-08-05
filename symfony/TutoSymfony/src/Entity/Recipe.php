@@ -5,9 +5,13 @@ namespace App\Entity;
 use App\Repository\RecipeRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+#[UniqueEntity('title')]
+#[UniqueEntity('slug')]
+
 class Recipe
 {
     #[ORM\Id]
@@ -16,15 +20,15 @@ class Recipe
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $title = null;
+    private string $title = '';
 
     #[ORM\Column(length: 255)]
-    // #[Assert\Regex('^[a-z0-9]+(?:-[a-z0-9]+)*$', message: "ceci n'est pas un slug valide")]
-    private ?string $slug = null;
+    #[Assert\Regex("/^[a-z0-9]+(?:-[a-z0-9]+)*$/", message: "ceci n'est pas un slug valide")]
+    private string $slug = '';
 
     #[ORM\Column(type: Types::TEXT)]
-    #[Assert\Length(min: 20)]
-    private ?string $content = null;
+    #[Assert\Length(min: 5)]
+    private string $content = '';
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -41,7 +45,7 @@ class Recipe
         return $this->id;
     }
 
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -53,7 +57,7 @@ class Recipe
         return $this;
     }
 
-    public function getSlug(): ?string
+    public function getSlug(): string
     {
         return $this->slug;
     }
@@ -65,7 +69,7 @@ class Recipe
         return $this;
     }
 
-    public function getContent(): ?string
+    public function getContent(): string
     {
         return $this->content;
     }
