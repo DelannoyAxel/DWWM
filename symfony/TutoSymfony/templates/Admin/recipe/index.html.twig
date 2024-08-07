@@ -8,7 +8,8 @@
 		<thead>
 			<tr>
 				<th>Titre</th>
-				<th>Action</th>
+				<th>Categorie</th>
+				<th style="width:200px">Action</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -17,6 +18,7 @@
 					<td>
 						<a href="{{ path("admin.recipe.edit", {id: recipe.id}) }}">{{recipe.title}}</a>
 					</td>
+					<td>{{ recipe.category.name | default('') }}</td>
 					<td>
 						<div class="d-flex gap-1">
 							<a class="btn btn-primary btn-sm" href="{{ path("admin.recipe.edit", {id: recipe.id}) }}">Editer</a>
@@ -32,5 +34,15 @@
 	</table>
 
 	<a class="btn btn-primary" href="{{ path("admin.recipe.create") }}">Ajouter une recette</a>
+
+	<div class="d-flex  justify-content-center align-item-center mt-6 ">
+		{% if page > 1 %}
+			<a href="{{ path("admin.recipe.index", {page: page - 1}) }}" class="btn btn-secondary">Page precedente</a>
+		{% endif %}
+		{% if page < maxPage %}
+			<a href="{{ path("admin.recipe.index", {page: page + 1}) }}" class="btn btn-secondary">Page Suivante</a>
+		{% endif %}
+
+	</div>
 
 {% endblock %}

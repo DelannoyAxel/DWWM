@@ -12,20 +12,22 @@
 		<thead>
 			<tr>
 				<th>Nom</th>
-				<th>Action</th>
+				<th>Recettes</th>
+				<th style="width:200px">Action</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for category in categories %}
 				<tr>
 					<td>{{ category.name }}</td>
+					<td>{{ category.count }}</td>
 					<td>
 						<div class="d-flex gap-1">
 							<a class="btn btn-primary" href="{{ path("admin.category.edit", {id:category.id}) }}">Editer</a>
 							<form action="{{ path('admin.category.delete', {id:category.id}) }}" method="post">
-                                <input type="hidden" name="_method" value="DELETE">
-                                <button class="btn btn-danger" type="submit">Suprimer</button>
-                            </form>
+								<input type="hidden" name="_method" value="DELETE">
+								<button class="btn btn-danger" type="submit">Suprimer</button>
+							</form>
 						</div>
 					</td>
 				</tr>

@@ -15,7 +15,7 @@
 			{% endblock %}
 		{% endblock %}
 	</head>
-	<body  class="bg-light">
+	<body class="bg-light">
 		<nav class="navbar bg-primary navbar-expand-lg" data-bs-theme="dark">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="{{ path('home') }}">Mon site</a>
@@ -25,19 +25,23 @@
 							<a class="nav-link {% if app.request.attributes.get('_route') == 'home' %}active{% endif %}" href="{{ path('home') }}">Accueil</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link {% if app.request.attributes.get('_route') starts with 'recipe.' %}active{% endif %}" href="{{ path('recipe.index') }}">Recettes</a>
+							<a class="nav-link {% if app.request.attributes.get('_route') == 'login' %}active{% endif %}" href="{{ path('login') }}">Login</a>
 						</li>
-						<li class="nav-item">
-							<a class="nav-link {% if app.request.attributes.get('_route') == 'contact' %}active{% endif %}" href="{{ path('contact') }}">Contact</a>
-						</li>
+
+						{# <li class="nav-item">
+																									<a class="nav-link {% if app.request.attributes.get('_route') starts with 'recipe.' %}active{% endif %}" href="{{ path('admin.recipe.index') }}">Recettes</a>
+																								</li>
+																								<li class="nav-item">
+																									<a class="nav-link {% if app.request.attributes.get('_route') == 'contact' %}active{% endif %}" href="{{ path('contact') }}">Contact</a>
+																								</li> #}
 					</ul>
 				</div>
 			</div>
 		</nav>
 		<div class="container my-4">
-		 {% include "partials/flash.html.twig" %}
-		
-		 {% block body %}{% endblock %}
-			</div>
-		</body>
-	</html>
+			{% include "partials/flash.html.twig" %}
+
+			{% block body %}{% endblock %}
+		</div>
+	</body>
+</html>

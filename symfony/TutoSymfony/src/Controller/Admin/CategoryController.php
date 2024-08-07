@@ -19,7 +19,7 @@ class CategoryController extends AbstractController
     public function index(CategoryRepository $repository)
     {
         return $this->render("admin/category/index.html.twig", [
-            "categories" => $repository->findAll()
+            "categories" => $repository->findAllWithCount()
         ]);
     }
 
@@ -40,10 +40,9 @@ class CategoryController extends AbstractController
         ]);
     }
 
-    #[Route("/{id}", name:"edit", requirements:["id" => Requirement::DIGITS], methods:["GET", "POST"])]
+    #[Route("/{id}", name:"edit",  methods:["GET", "POST"], requirements: ["id" =>Requirement::DIGITS])]
     public function edit(Category $category, Request $request, EntityManagerInterface $em)
     {
-        $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
