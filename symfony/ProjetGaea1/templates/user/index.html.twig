@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users informations
+{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Nom</th>
+				<th scope="col">Prenom</th>
+				<th scope="col">Adresse</th>
+				<th scope="col">Email</th>
+				<th scope="col">Tel</th>
+				<th style="width:200px">Action</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			{% for user in users %}
+
+				<tr>
+					<td>
+						{{user.id}}
+					</td>
+					<td>
+						{{user.nom}}
+					</td>
+					<td>
+						{{user.prenom}}
+					</td>
+					<td>
+						{{user.adresse}}
+					</td>
+					<td>
+						{{user.email}}
+					</td>
+					<td>
+						{{user.tel}}
+					</td>
+					<td>
+						<div class="d-flex gap-1">
+							<a class="btn btn-primary btn-sm" href="">Editer</a>
+							<button type="submit" class="btn btn-danger btn-sm">Suprimer</button>
+						</form>
+					</td>
+				</tr>
+			</div>
+		</tbody>
+	</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+	<a class="btn btn-primary" href="{{ path("create") }}">Ajouter un user</a>
+
+{% endblock %}
