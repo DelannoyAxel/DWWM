@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Informations de l'utilisateur{% endblock %}
+
+{% block body %}
+<div class="container mt-4">
+    <h2>Informations de l'utilisateur</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tel</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nom }}</td>
+                <td>{{ user.prenom }}</td>
+                <td>{{ user.adresse }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.tel }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Possessions de l'utilisateur</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Nom</th>
+                <th scope="col">Valeur</th>
+                <th scope="col">Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for possession in user.possessions %}
+                <tr>
+                    <td>{{ possession.nom }}</td>
+                    <td>{{ possession.valeur }}€</td>
+                    <td>{{ possession.type }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

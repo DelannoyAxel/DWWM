@@ -42,19 +42,15 @@
 					</td>
 					<td>
 						<div class="d-flex gap-1">
-							<a class="btn btn-primary btn-sm" href="">Editer</a>
-							<button type="submit" class="btn btn-danger btn-sm">Suprimer</button>
-						</form>
+							<a class="btn btn-warning btn-sm" href="{{ path('possession', {id: user.id}) }}">Possessions</a>
+							<a class="btn btn-primary btn-sm" href="{{ path("edit", {id: user.id}) }}">Editer</a>
+							<form method="POST" action="{{ path('delete', {id: user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+								<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+							</form>
+						</td>
 					</td>
 				</tr>
 			</div>
 		</tbody>
 	</td>
-</tr>
-{% endfor %}
-</tbody>
-</table>
-</div>
-	<a class="btn btn-primary" href="{{ path("create") }}">Ajouter un user</a>
-
-{% endblock %}
+</tr>{% endfor %}</tbody></table></div><a class="btn btn-primary pl-5" href="{{ path("create") }}">Ajouter un utilisateur</a>{% endblock %}

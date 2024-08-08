@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -27,6 +29,16 @@ class User
 
     #[ORM\Column(length: 40)]
     private ?string $tel = null;
+
+
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Possession::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
+    private Collection $possessions;
+
+    public function __construct()
+    {
+        $this->possessions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -96,6 +108,37 @@ class User
     public function setTel(string $tel): static
     {
         $this->tel = $tel;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Possession>
+     */
+
+    public function getPossessions(): Collection
+    {
+        return $this->possessions;
+    }
+
+    public function addPossession(Possession $possession): static
+    {
+        if(!$this->possessions->contains($possession)){
+            $this->possessions->add($possession);
+            $possession->setUser($this);
+        }
+        
+        return $this;
+    }
+
+
+    public function removePossession(Possession $possession): static
+    {
+        if ($this->possessions->removeElement($possession)) {
+            if ($possession->getUser() === $this) {
+                $possession->setUser(null);
+            }
+        }
 
         return $this;
     }
