@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -43,6 +44,13 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'form-control'],
                 'required' => false,
             ])
+            ->add('birthDate', DateType::class, [
+                'label' => 'Date de naissance',
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+                'attr' => ['class' => 'form-control'],
+                'required' => false,
+            ])
             ->add('possessions', CollectionType::class, [
                 'entry_type' => PossessionType::class,
                 'allow_add' => true,
@@ -64,7 +72,6 @@ class UserType extends AbstractType
                 'attr' => ['class' => 'btn btn-primary']
             ]);
     }
-
 
     public function configureOptions(OptionsResolver $resolver): void
     {

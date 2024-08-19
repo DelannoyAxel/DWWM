@@ -1,56 +1,48 @@
+{# templates/user/index.html.twig #}
 {% extends 'base.html.twig' %}
 
-{% block title %}Users informations
-{% endblock %}
+{% block title %}Users informations{% endblock %}
 
 {% block body %}
 <div class="container mt-4">
-	<table class="table table-striped">
-		<thead>
-			<tr>
-				<th scope="col">Id</th>
-				<th scope="col">Nom</th>
-				<th scope="col">Prenom</th>
-				<th scope="col">Adresse</th>
-				<th scope="col">Email</th>
-				<th scope="col">Tel</th>
-				<th style="width:200px">Action</th>
-
-			</tr>
-		</thead>
-		<tbody>
-			{% for user in users %}
-
-				<tr>
-					<td>
-						{{user.id}}
-					</td>
-					<td>
-						{{user.nom}}
-					</td>
-					<td>
-						{{user.prenom}}
-					</td>
-					<td>
-						{{user.adresse}}
-					</td>
-					<td>
-						{{user.email}}
-					</td>
-					<td>
-						{{user.tel}}
-					</td>
-					<td>
-						<div class="d-flex gap-1">
-							<a class="btn btn-warning btn-sm" href="{{ path('possession', {id: user.id}) }}">Possessions</a>
-							<a class="btn btn-primary btn-sm" href="{{ path("edit", {id: user.id}) }}">Editer</a>
-							<form method="POST" action="{{ path('delete', {id: user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
-								<button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-							</form>
-						</td>
-					</td>
-				</tr>
-			</div>
-		</tbody>
-	</td>
-</tr>{% endfor %}</tbody></table></div><a class="btn btn-primary pl-5" href="{{ path("create") }}">Ajouter un utilisateur</a>{% endblock %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Prenom</th>
+                <th scope="col">Adresse</th>
+                <th scope="col">Email</th>
+                <th scope="col">Tel</th>
+                <th scope="col">Date de naissance</th>
+                <th scope="col">Âge</th> 
+                <th style="width:200px">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.nom }}</td>
+                    <td>{{ user.prenom }}</td>
+                    <td>{{ user.adresse }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ user.tel }}</td>
+                    <td>{{ user.birthDate ? user.birthDate|date('Y-m-d') : 'N/A' }}</td>
+                    <td>{{ userAges[user.id] }}</td> <!-- Affichage de l'âge -->
+                    <td>
+                        <div class="d-flex gap-1">
+                            <a class="btn btn-warning btn-sm" href="{{ path('possession', {id: user.id}) }}">Possessions</a>
+                            <a class="btn btn-primary btn-sm" href="{{ path('edit', {id: user.id}) }}">Editer</a>
+                            <form method="POST" action="{{ path('delete', {id: user.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet utilisateur ?');">
+                                <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-primary" href="{{ path('create') }}">Ajouter un utilisateur</a>
+</div>
+{% endblock %}
