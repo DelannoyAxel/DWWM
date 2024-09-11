@@ -10,10 +10,8 @@
         {% endblock %}
     </head>
     <body>
-        {# Le contenu spécifique de la page sera injecté ici #}
         {% block body %}{% endblock %}
         
-        {# Inclusion des scripts JS #}
         {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
         {% endblock %}

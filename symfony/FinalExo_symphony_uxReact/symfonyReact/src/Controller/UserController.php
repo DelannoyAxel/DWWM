@@ -23,10 +23,8 @@ class UserController extends AbstractController
 
     public function getUsers(EntityManagerInterface $em): JsonResponse
     {
-        // Récupère tous les utilisateurs depuis la base de données
         $users = $em->getRepository(User::class)->findAll();
 
-        // Transforme les données en un tableau (array)
         $data = [];
         foreach ($users as $user) {
             $data[] = [
@@ -39,7 +37,6 @@ class UserController extends AbstractController
             ];
         }
 
-        // Retourne une réponse JSON
         return new JsonResponse($data);
     }
 }
