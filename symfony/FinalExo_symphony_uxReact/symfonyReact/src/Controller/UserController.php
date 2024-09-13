@@ -19,8 +19,6 @@ class UserController extends AbstractController
 {
     
     #[Route("/api/users", name:"get_users", methods: ["GET"])]
-
-
     public function getUsers(EntityManagerInterface $em): JsonResponse
     {
         $users = $em->getRepository(User::class)->findAll();
@@ -38,5 +36,21 @@ class UserController extends AbstractController
         }
 
         return new JsonResponse($data);
+    }
+
+
+    #[Route("/api/users/{id}", name:"delete_user", methods: ["DELETE"])]
+    public function deleteUser($id, EntityManagerInterface $em): JsonResponse
+    {
+        $user = $em->getRepository(User::class)->find($id);
+
+        if (!$user) {
+            return new JsonResponse(['error' => 'User not found'], 404);
+        }
+
+        $em->remove($user);
+        $em->flush();
+
+        return new JsonResponse(['status' => 'User deleted'], 200);
     }
 }
