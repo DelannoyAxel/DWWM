@@ -14,28 +14,20 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface as SerializerInterface;
 
 class UserController extends AbstractController
 {
     
-    #[Route("/api/users", name:"get_users", methods: ["GET"])]
-    public function getUsers(EntityManagerInterface $em): JsonResponse
+    #[Route("/api/users", name: "get_users", methods: ["GET"])]
+    public function getUsers(EntityManagerInterface $em, SerializerInterface $serializer): JsonResponse
     {
         $users = $em->getRepository(User::class)->findAll();
 
-        $data = [];
-        foreach ($users as $user) {
-            $data[] = [
-                'id' => $user->getId(),
-                'nom' => $user->getNom(),
-                'prenom' => $user->getPrenom(),
-                'adresse' => $user->getAdresse(),
-                'email' => $user->getEmail(),
-                'tel' => $user->getTel(),
-            ];
-        }
+        //on converti les objets User en JSON
+        $dataJson = $serializer->serialize($users, 'json', ['groups' => 'user:read']);
 
-        return new JsonResponse($data);
+        return new JsonResponse($dataJson, 200, [], true); 
     }
 
 

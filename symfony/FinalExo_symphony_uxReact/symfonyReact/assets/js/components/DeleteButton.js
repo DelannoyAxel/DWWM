@@ -11,7 +11,7 @@ const DeleteButton = ({ userId, onDelete, users }) => {
                     throw new Error(errorData.error || 'Erreur lors de la suppression.');
                 });
             }
-            // Mettre à jour le state dans le composant parent
+            // Met à jour le state dans le composant parent
             onDelete(users.filter(user => user.id !== userId));
         })
         .catch(error => console.error('Erreur lors de la suppression:', error));

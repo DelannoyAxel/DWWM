@@ -6,33 +6,40 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
 {
+
+    #[Groups('user:read')]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(length: 40)]
-    private ?string $Nom = null;
+    private ?string $nom = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(length: 40)]
-    private ?string $Prenom = null;
+    private ?string $prenom = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(length: 40)]
     private ?string $email = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(length: 40)]
     private ?string $adresse = null;
 
+    #[Groups('user:read')]
     #[ORM\Column(length: 40)]
     private ?string $tel = null;
 
-
-
+    #[Groups('user:read')]
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Possession::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $possessions;
 
@@ -58,24 +65,24 @@ class User
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(string $Nom): static
+    public function setNom(string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }
 
     public function getPrenom(): ?string
     {
-        return $this->Prenom;
+        return $this->prenom;
     }
 
-    public function setPrenom(string $Prenom): static
+    public function setPrenom(string $prenom): static
     {
-        $this->Prenom = $Prenom;
+        $this->prenom = $prenom;
 
         return $this;
     }
