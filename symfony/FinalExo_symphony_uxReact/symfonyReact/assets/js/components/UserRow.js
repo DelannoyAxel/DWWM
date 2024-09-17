@@ -1,11 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Assure-toi que 'Link' est importé
 import DeleteButton from './DeleteButton';
 
 const UserRow = ({ user, onDelete, users }) => {
     return (
         <tr>
             <td>{user.id}</td>
-            <td>{user.nom}</td>
+            <td><Link to={`/user/${user.id}/possessions`}>{user.nom}</Link></td>
             <td>{user.prenom}</td>
             <td>{user.adresse}</td>
             <td>{user.email}</td>

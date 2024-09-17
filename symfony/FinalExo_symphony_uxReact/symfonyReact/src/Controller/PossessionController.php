@@ -3,38 +3,26 @@
 
 namespace App\Controller;
 
-use App\Repository\PossessionRepository;
-use App\Repository\UserRepository;
+use App\Entity\User;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class PossessionController extends AbstractController
 {
-    #[Route('/api/user/{id}/possessions', name: 'api_possessions', methods: ['GET'])]
-    public function getPossessions(int $id, UserRepository $userRepository, PossessionRepository $repository): JsonResponse
+    #[Route("/api/users/{id}/possessions", name: "get_user_possessions", methods: ["GET"])]
+    public function getUserPossessions($id, EntityManagerInterface $em, SerializerInterface $serializer): JsonResponse
     {
-        $user = $userRepository->find($id);
-
+        $user = $em->getRepository(User::class)->find($id);
         if (!$user) {
             return new JsonResponse(['error' => 'User not found'], 404);
         }
 
-        $possessions = $repository->findBy(['user' => $user]);
+        $possessions = $user->getPossessions();
 
-        $userData = [
-            'id' => $user->getId(),
-            'name' => $user->getName(),
-            'email' => $user->getEmail(),
-            'possessions' => array_map(function ($possession) {
-                return [
-                    'id' => $possession->getId(),
-                    'type' => $possession->getType(),
-                    'description' => $possession->getDescription(),
-                ];
-            }, $possessions)
-        ];
-
-        return new JsonResponse($userData);
+        $jsonData = $serializer->serialize($possessions, 'json', ['groups' => 'possession:read']);
+        return new JsonResponse($jsonData, 200, [], true);
     }
 }

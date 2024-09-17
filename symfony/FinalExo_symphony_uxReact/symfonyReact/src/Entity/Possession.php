@@ -2,25 +2,30 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\PossessionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PossessionRepository::class)]
 class Possession
 {
+    #[Groups('possession:read')]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('possession:read')]
     #[ORM\Column(length: 40, nullable: true)]
-    private ?string $Nom = null;
+    private ?string $nom = null;
 
+    #[Groups('possession:read')]
     #[ORM\Column (nullable: true)]
-    private ?float $Valeur = null;
+    private ?float $valeur = null;
 
+    #[Groups('possession:read')]
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $Type = null;
+    private ?string $type = null;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'possessions')]
     #[ORM\JoinColumn(nullable: false)]
@@ -33,36 +38,36 @@ class Possession
 
     public function getNom(): ?string
     {
-        return $this->Nom;
+        return $this->nom;
     }
 
-    public function setNom(?string $Nom): static
+    public function setNom(?string $nom): static
     {
-        $this->Nom = $Nom;
+        $this->nom = $nom;
 
         return $this;
     }
 
     public function getValeur(): ?float
     {
-        return $this->Valeur;
+        return $this->valeur;
     }
 
-    public function setValeur(?float $Valeur): static
+    public function setValeur(?float $valeur): static
     {
-        $this->Valeur = $Valeur;
+        $this->valeur = $valeur;
 
         return $this;
     }
 
     public function getType(): ?string
     {
-        return $this->Type;
+        return $this->type;
     }
 
-    public function setType(?string $Type): static
+    public function setType(?string $type): static
     {
-        $this->Type = $Type;
+        $this->type = $type;
 
         return $this;
     }

@@ -45,4 +45,5 @@ class UserController extends AbstractController
 
         return new JsonResponse(['status' => 'User deleted'], 200);
     }
+
 }
