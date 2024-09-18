@@ -1,18 +1,21 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import UsersTable from './components/UserTable';  // Assure-toi que le nom est correct
-import UserPossessions from './components/UserPossessions';
-import '../styles/app.css';
+import { createRoot } from 'react-dom/client';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
+import UserTable from './components/UserTable';
+import UserPossessions from './components/UserPossessions'; 
+import style from '../styles/app.css'
 
-const App = () => {
-    return (
-        <Router>
-            <Routes>
-                <Route path="/user/:id/possessions" element={<UserPossessions />} />
-                <Route path="/" element={<UsersTable />} />
-            </Routes>
-        </Router>
-    );
-};
+const rootElement = document.getElementById('root');
 
-export default App;
+const root = createRoot(rootElement);
+
+root.render(
+  <React.StrictMode>
+    <Router>
+      <Routes>
+        <Route path="/" element={<UserTable />} />
+        <Route path="/users/:id" element={<UserPossessions />} />
+      </Routes>
+    </Router>
+  </React.StrictMode>
+);

@@ -1,35 +1,28 @@
 <?php
-// src/Controller/UserController.php
+
 namespace App\Controller;
 
-use App\Entity\Possession;
 use App\Entity\User;
-use App\Form\PossessionType;
-use App\Form\UserType;
 use App\Repository\UserRepository;
-use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Serializer\SerializerInterface as SerializerInterface;
+use Symfony\Component\Serializer\SerializerInterface;
 
 class UserController extends AbstractController
 {
-    
-    #[Route("/api/users", name: "get_users", methods: ["GET"])]
-    public function getUsers(EntityManagerInterface $em, SerializerInterface $serializer): JsonResponse
+    #[Route('/api/users', name: 'api_users', methods: ['GET'])]
+    public function getUsers(UserRepository $userRepository, SerializerInterface $serializer): JsonResponse
     {
-        $users = $em->getRepository(User::class)->findAll();
+        // Récupère tous les utilisateurs sans leurs possessions
+        $users = $userRepository->findAll();
 
-        //on converti les objets User en JSON
-        $dataJson = $serializer->serialize($users, 'json', ['groups' => 'user:read']);
+        // Sérialisation en excluant les possessions
+        $data = $serializer->serialize($users, 'json', ['groups' => 'user:read']);
 
-        return new JsonResponse($dataJson, 200, [], true); 
+        return new JsonResponse($data, 200, [], true);
     }
-
 
     #[Route("/api/users/{id}", name:"delete_user", methods: ["DELETE"])]
     public function deleteUser($id, EntityManagerInterface $em): JsonResponse
@@ -45,5 +38,4 @@ class UserController extends AbstractController
 
         return new JsonResponse(['status' => 'User deleted'], 200);
     }
-
 }

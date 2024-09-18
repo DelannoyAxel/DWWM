@@ -2,32 +2,31 @@
 
 namespace App\Entity;
 
-use Symfony\Component\Serializer\Annotation\Groups;
 use App\Repository\PossessionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PossessionRepository::class)]
 class Possession
 {
-    #[Groups('possession:read')]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups('possession:read')]
-    #[ORM\Column(length: 40, nullable: true)]
+    #[ORM\Column(length: 255)]
+    #[Groups('user:read')]
     private ?string $nom = null;
 
-    #[Groups('possession:read')]
-    #[ORM\Column (nullable: true)]
+    #[ORM\Column(length: 255)]
+    #[Groups('user:read')]
     private ?float $valeur = null;
 
-    #[Groups('possession:read')]
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255)]
+    #[Groups('user:read')]
     private ?string $type = null;
 
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'possessions')]
+    #[ORM\ManyToOne(inversedBy: 'possessions')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 
@@ -41,7 +40,7 @@ class Possession
         return $this->nom;
     }
 
-    public function setNom(?string $nom): static
+    public function setNom(string $nom): static
     {
         $this->nom = $nom;
 
@@ -53,7 +52,7 @@ class Possession
         return $this->valeur;
     }
 
-    public function setValeur(?float $valeur): static
+    public function setValeur(float $valeur): static
     {
         $this->valeur = $valeur;
 
@@ -65,7 +64,7 @@ class Possession
         return $this->type;
     }
 
-    public function setType(?string $type): static
+    public function setType(string $type): static
     {
         $this->type = $type;
 
@@ -77,8 +76,10 @@ class Possession
         return $this->user;
     }
 
-    public function setUser(?User $user):static{
+    public function setUser(?User $user): static
+    {
         $this->user = $user;
+
         return $this;
     }
 }

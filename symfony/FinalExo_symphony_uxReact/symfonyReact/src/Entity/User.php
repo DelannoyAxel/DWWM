@@ -6,46 +6,51 @@ use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Annotation\SerializedName;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User
 {
-
-    #[Groups('user:read')]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups('user:read')]
     private ?int $id = null;
 
+    #[ORM\Column(length: 255)]
     #[Groups('user:read')]
-    #[ORM\Column(length: 40)]
     private ?string $nom = null;
 
+    #[ORM\Column(length: 255)]
     #[Groups('user:read')]
-    #[ORM\Column(length: 40)]
     private ?string $prenom = null;
 
+    #[ORM\Column(length: 255)]
     #[Groups('user:read')]
-    #[ORM\Column(length: 40)]
     private ?string $email = null;
 
+    #[ORM\Column(length: 255)]
     #[Groups('user:read')]
-    #[ORM\Column(length: 40)]
     private ?string $adresse = null;
 
+    #[ORM\Column(length: 255)]
     #[Groups('user:read')]
-    #[ORM\Column(length: 40)]
     private ?string $tel = null;
 
+    /**
+     * @var Collection<int, Possession>
+     */
+    #[ORM\OneToMany(targetEntity: Possession::class, mappedBy: 'user', orphanRemoval: true)]
     #[Groups('user:read')]
-    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Possession::class, orphanRemoval: true, cascade: ['persist', 'remove'])]
     private Collection $possessions;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups('user:read')]
+    #[SerializedName('birthDate')]
     private ?\DateTimeInterface $birthDate = null;
-
+    
     public function __construct()
     {
         $this->possessions = new ArrayCollection();
@@ -54,13 +59,6 @@ class User
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): static
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getNom(): ?string
@@ -126,7 +124,6 @@ class User
     /**
      * @return Collection<int, Possession>
      */
-
     public function getPossessions(): Collection
     {
         return $this->possessions;
@@ -134,18 +131,18 @@ class User
 
     public function addPossession(Possession $possession): static
     {
-        if(!$this->possessions->contains($possession)){
+        if (!$this->possessions->contains($possession)) {
             $this->possessions->add($possession);
             $possession->setUser($this);
         }
-        
+
         return $this;
     }
-
 
     public function removePossession(Possession $possession): static
     {
         if ($this->possessions->removeElement($possession)) {
+            // set the owning side to null (unless already changed)
             if ($possession->getUser() === $this) {
                 $possession->setUser(null);
             }

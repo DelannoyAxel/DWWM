@@ -2,58 +2,99 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 const UserPossessions = () => {
-    const { id } = useParams();
-    const [user, setUser] = useState(null);
-    const [possessions, setPossessions] = useState([]);
+  const { id } = useParams();
+  const [user, setUser] = useState(null);
+  const [possessions, setPossessions] = useState([]);
 
-    useEffect(() => {
-        // Récupère les informations de l'utilisateur
-        fetch(`/api/users/${id}`)
-            .then(response => response.json())
-            .then(data => setUser(data))
-            .catch(error => console.error('Erreur lors de la récupération des informations de l’utilisateur:', error));
+  useEffect(() => {
+    if (id) {
+      // Récupérer les informations de l'utilisateur avec ses possessions
+      fetch(`/api/users/${id}/details`)
+        .then(response => response.json())
+        .then(data => {
+          console.log('User data:', data);  
+          setUser(data);
+        })
+        .catch(error => console.error('Error fetching user:', error));
+  
+      // Récupérer les possessions de l'utilisateur
+      fetch(`/api/users/${id}/possessions`)
+        .then(response => response.json())
+        .then(data => setPossessions(data))
+        .catch(error => console.error('Error fetching user possessions:', error));
+    }
+  }, [id]);
 
-        // Récupère les possessions de l'utilisateur
-        fetch(`/api/users/${id}/possessions`)
-            .then(response => response.json())
-            .then(data => setPossessions(data))
-            .catch(error => console.error('Erreur lors de la récupération des possessions:', error));
-    }, [id]);
+  if (!user) {
+    return <p>Chargement des informations utilisateur...</p>;
+  }
 
-    return (
-        <div>
-            <h2>Détails de l'utilisateur</h2>
-            {user && (
-                <div>
-                    <h3>{user.nom} {user.prenom}</h3>
-                    <p>Adresse: {user.adresse}</p>
-                    <p>Email: {user.email}</p>
-                    <p>Téléphone: {user.tel}</p>
-                </div>
-            )}
-            <h2>Possessions</h2>
-            <table border="1">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nom</th>
-                        <th>Valeur</th>
-                        <th>Type</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {possessions.map((possession) => (
-                        <tr key={possession.id}>
-                            <td>{possession.id}</td>
-                            <td>{possession.nom}</td>
-                            <td>{possession.valeur}</td>
-                            <td>{possession.type}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-        </div>
-    );
+  return (
+    <div className="container mt-5">
+      <h2 className="text-center">Détails de l'utilisateur</h2>
+      
+      {/* Tableau des informations utilisateur */}
+      <table className="table table-striped table-bordered mb-4">
+        <tbody>
+          <tr>
+            <th>ID</th>
+            <td>{user.id}</td>
+          </tr>
+          <tr>
+            <th>Nom</th>
+            <td>{user.nom}</td>
+          </tr>
+          <tr>
+            <th>Prénom</th>
+            <td>{user.prenom}</td>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <td>{user.email}</td>
+          </tr>
+          <tr>
+            <th>Adresse</th>
+            <td>{user.adresse}</td>
+          </tr>
+          <tr>
+            <th>Téléphone</th>
+            <td>{user.tel}</td>
+          </tr>
+          <tr>
+            <th>Date de naissance</th>
+            <td>{user.birthDate}</td>
+          </tr>
+        </tbody>
+      </table>
+
+      {/* Tableau des possessions */}
+      <h3 className="text-center">Possessions</h3>
+      <table className="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Valeur</th>
+            <th>Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {possessions.length === 0 ? (
+            <tr>
+              <td colSpan="4">Aucune possession trouvée.</td>
+            </tr>
+          ) : (
+            possessions.map(possession => (
+              <tr key={possession.id}>
+                <td>{possession.nom}</td>
+                <td>{possession.valeur}</td>
+                <td>{possession.type}</td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+    </div>
+  );
 };
 
 export default UserPossessions;

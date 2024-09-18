@@ -1,10 +1,8 @@
 <?php
 
-
 namespace App\Controller;
 
-use App\Entity\User;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -12,17 +10,34 @@ use Symfony\Component\Serializer\SerializerInterface;
 
 class PossessionController extends AbstractController
 {
-    #[Route("/api/users/{id}/possessions", name: "get_user_possessions", methods: ["GET"])]
-    public function getUserPossessions($id, EntityManagerInterface $em, SerializerInterface $serializer): JsonResponse
+    #[Route('/api/users/{id}/details', name: 'api_get_user_with_possessions', methods: ['GET'])]
+    public function getUserWithPossessions(int $id, UserRepository $userRepository, SerializerInterface $serializer): JsonResponse
     {
-        $user = $em->getRepository(User::class)->find($id);
+        $user = $userRepository->find($id);
+
         if (!$user) {
             return new JsonResponse(['error' => 'User not found'], 404);
         }
 
-        $possessions = $user->getPossessions();
+        // Sérialisation de l'utilisateur avec ses possessions
+        $data = $serializer->serialize($user, 'json', ['groups' => 'user:read']);
 
-        $jsonData = $serializer->serialize($possessions, 'json', ['groups' => 'possession:read']);
-        return new JsonResponse($jsonData, 200, [], true);
+        return new JsonResponse($data, 200, [], true);
+    }
+
+    #[Route('/api/users/{id}/possessions', name: 'api_user_possessions', methods: ['GET'])]
+    public function getUserPossessions(int $id, UserRepository $userRepository, SerializerInterface $serializer): JsonResponse
+    {
+        $user = $userRepository->find($id);
+
+        if (!$user) {
+            return new JsonResponse(['error' => 'User not found'], 404);
+        }
+
+        // Récupération et sérialisation des possessions
+        $possessions = $user->getPossessions();
+        $data = $serializer->serialize($possessions, 'json', ['groups' => 'user:read']);
+
+        return new JsonResponse($data, 200, [], true);
     }
 }
