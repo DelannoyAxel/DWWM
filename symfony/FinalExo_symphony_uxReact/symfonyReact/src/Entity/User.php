@@ -39,6 +39,9 @@ class User
     #[Groups('user:read')]
     private ?string $tel = null;
 
+    #[Groups('user:read')]
+    public ?int $age = null;
+
     /**
      * @var Collection<int, Possession>
      */
@@ -50,7 +53,7 @@ class User
     #[Groups('user:read')]
     #[SerializedName('birthDate')]
     private ?\DateTimeInterface $birthDate = null;
-    
+
     public function __construct()
     {
         $this->possessions = new ArrayCollection();

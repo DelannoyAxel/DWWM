@@ -2,15 +2,18 @@
 
 namespace App\Service;
 
-use DateTimeInterface;
+use App\Entity\User;
 use DateTime;
 
 class UserService
 {
-    public function calculateAge(DateTimeInterface $birthDate): int
+    public function calculateAge(User $user): int
     {
-        $now = new DateTime();
-        $age = $now->diff($birthDate)->y;
+        $birthDate = $user->getBirthDate();  
+        $currentDate = new DateTime();  
+        $age = $currentDate->diff($birthDate)->y;  
         return $age;
     }
+    
+    
 }

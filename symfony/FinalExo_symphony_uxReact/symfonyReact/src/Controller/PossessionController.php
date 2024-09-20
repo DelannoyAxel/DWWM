@@ -7,6 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
+
 
 class PossessionController extends AbstractController
 {
@@ -20,8 +22,10 @@ class PossessionController extends AbstractController
         }
 
         // Sérialisation de l'utilisateur avec ses possessions
-        $data = $serializer->serialize($user, 'json', ['groups' => 'user:read']);
-
+        $data = $serializer->serialize($user, 'json', [
+            'groups' => 'user:read',
+            DateTimeNormalizer::FORMAT_KEY => 'Y-m-d', 
+        ]);
         return new JsonResponse($data, 200, [], true);
     }
 

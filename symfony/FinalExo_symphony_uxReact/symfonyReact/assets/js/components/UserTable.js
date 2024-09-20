@@ -36,6 +36,7 @@ const UserTable = () => {
             <th>Adresse</th>
             <th>Téléphone</th>
             <th>Année de naissance</th>
+            <th>Âge</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -49,6 +50,7 @@ const UserTable = () => {
               <td>{user.adresse}</td>
               <td>{user.tel}</td>
               <td>{user.birthDate}</td>
+              <td>{user.age}</td>
               <td>
                 <button className="btn btn-danger" onClick={() => deleteUser(user.id)}>
                   Supprimer
