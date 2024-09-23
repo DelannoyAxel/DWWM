@@ -3,7 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import UserTable from './components/UserTable';
 import UserPossessions from './components/UserPossessions'; 
-import style from '../styles/app.css'
 
 const rootElement = document.getElementById('root');
 
