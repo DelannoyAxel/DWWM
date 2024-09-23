@@ -4,13 +4,13 @@ import AddUserModal from './addUser';
 
 const UserTable = () => {
   const [users, setUsers] = useState([]);
-  const [showModal, setShowModal] = useState(false); // État pour afficher ou non le modal
+  const [showModal, setShowModal] = useState(false); 
 
   useEffect(() => {
     fetch('/api/users')
       .then(response => response.json())
       .then(data => setUsers(data))
-      .catch(error => console.error('Error fetching users:', error));
+      .catch(error => console.error('erreur fetch user', error));
   }, []);
 
   const deleteUser = (id) => {
@@ -22,7 +22,7 @@ const UserTable = () => {
           console.error('L\'utilisateur n\'a pas pu être supprimé.');
         }
       })
-      .catch(error => console.error('Error:', error));
+      .catch(error => console.error('Erreur:', error));
   };
 
   const handleShowModal = () => setShowModal(true);
@@ -43,7 +43,7 @@ const UserTable = () => {
         // Re-fetch the list of users to get updated data
         const updatedUsers = await fetch('/api/users');
         const data = await updatedUsers.json();
-        setUsers(data); // Update the users list with fresh data from the backend
+        setUsers(data); 
       } else {
         console.error("Erreur lors de l'ajout de l'utilisateur");
       }
@@ -52,13 +52,6 @@ const UserTable = () => {
     }
   };
   
-
-  // Fonction pour calculer l'âge d'un utilisateur
-  const calculateAge = (birthDate) => {
-    const birth = new Date(birthDate);
-    const now = new Date();
-    return now.getFullYear() - birth.getFullYear();
-  };
 
   return (
     <div className="container mt-5">
@@ -101,7 +94,7 @@ const UserTable = () => {
               <td>{user.adresse}</td>
               <td>{user.tel}</td>
               <td>{user.birthDate}</td>
-              <td>{calculateAge(user.birthDate)}</td>
+              <td>{user.age}</td>
               <td>
                 <button className="btn btn-danger" onClick={() => deleteUser(user.id)}>
                   Supprimer
